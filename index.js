@@ -18,8 +18,15 @@ const server = express();
 const Projects = require('./data/helpers/projectModel.js');
 const Actions = require('./data/helpers/actionModel.js')
 server.use(express.json())
+// server.use( function myCors(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "http://10.0.0.7:3000"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Method", "GET");
+//     next();
+//   });
 
-// <<<=== POST ===>>>
+
+// <<<=== PROJECTS ===>>>
 server.post('/api/projects', (req, res) => {
     Projects.insert(req.body)
     .then(response => {
@@ -27,7 +34,7 @@ server.post('/api/projects', (req, res) => {
     })
 })
 
-server.get('/api/projects', (req, res) => {
+server.get('/api/projects', /* myCors(req, res, next) */ () => {
     Projects.get()
     .then(response => {
         res.status(200).json(response)
