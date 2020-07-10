@@ -19,7 +19,7 @@ const Projects = require('./data/helpers/projectModel.js');
 const Actions = require('./data/helpers/actionModel.js')
 server.use(express.json())
 server.use( function myCors(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://10.0.0.7:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Method", "GET");
     next();
